@@ -44,6 +44,8 @@ public class misaligned {
 		assert (getMajorColor(1) == "Red");
 		assert (getMinorColor(2) == "Green");
 		assert (colorMap.get(7) == "Red|Green");
+		assert (colorMap.containsKey(25));
+		assert (!colorMap.containsKey(0));
 		System.out.println("All is well (maybe!)");
 	}
 }

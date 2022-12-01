@@ -3,7 +3,7 @@ public class alerter {
 
 	static int networkAlert(float celcius) {
 		System.out.println("ALERT: Temperature is " + celcius + " celcius");
-		if (celcius > 200) {
+		if (celcius >= 200) {
 			return 500;
 		}
 		return 200;
@@ -24,8 +24,9 @@ public class alerter {
 
 	public static void main(String[] args) {
 		alertInCelcius(400.5f);
+		alertInCelcius(392f);
 		alertInCelcius(303.6f);
-		assert (alertFailureCount == 1);
+		assert (alertFailureCount == 2);
 		System.out.printf("%d alerts failed.\n", alertFailureCount);
 		System.out.println("All is well (maybe!)\n");
 	}
