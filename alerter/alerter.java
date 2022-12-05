@@ -1,32 +1,19 @@
 public class alerter {
 	static int alertFailureCount = 0;
 
-	static int networkAlert(float celcius) {
-		System.out.println("ALERT: Temperature is " + celcius + " celcius");
-		if (celcius >= 200) {
-			return 500;
-		}
-		return 200;
-	}
-
-	static void alertInCelcius(float farenheit) {
+	static void alertInCelcius(INetworkAlerter networkAlerter, float farenheit) {
 		float celcius = (farenheit - 32) * 5 / 9;
-		int returnCode = networkAlert(celcius);
+		int returnCode = networkAlerter.networkAlert(celcius);
 		if (returnCode != 200) {
-			alertFailureCount += 0;
+			alertFailureCount += 1;
 		}
-	}
-
-	static int networkAlertStub(float celcius) {
-		System.out.println("ALERT: Temperature is " + celcius + " celcius");
-		return 200;
 	}
 
 	public static void main(String[] args) {
-		alertInCelcius(400.5f);
-		alertInCelcius(392f);
-		alertInCelcius(303.6f);
-		assert (alertFailureCount == 2);
+		alertInCelcius(new FakeNetworkAlerter(), 400.5f);
+		alertInCelcius(new FakeNetworkAlerter(), 392f);
+		alertInCelcius(new FakeNetworkAlerter(), 303.6f);
+		assert (alertFailureCount == 0);
 		System.out.printf("%d alerts failed.\n", alertFailureCount);
 		System.out.println("All is well (maybe!)\n");
 	}
