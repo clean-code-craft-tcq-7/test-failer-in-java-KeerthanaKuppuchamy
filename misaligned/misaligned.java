@@ -18,14 +18,18 @@ public class misaligned {
 	}
 
 	private static Integer getPairNumber(int i, int j) {
-		return i * 5 + j;
+		return (i * 5 + j) + 1;
 	}
 
 	public static void main(String[] args) {
 		int result = printColorMap(majorColors.length, minorColors.length);
 		assert (result == 25);
-		assert (getPairNumber(1, 2) == 7);
-		assert (formatColorCode(7, 1, 2).equalsIgnoreCase("7 | Red | Green"));
+		assert (getPairNumber(0, 0) == 1);
+		assert (formatColorCode(1, 0, 0).equalsIgnoreCase("1 | White | Blue"));
+		assert (getPairNumber(4, 4) == 25);
+		assert (formatColorCode(25, 4, 4).equalsIgnoreCase("25 | Violet | Slate"));
+		assert (getPairNumber(1, 2) == 8);
+		assert (formatColorCode(8, 1, 2).equalsIgnoreCase("8 | Red | Green"));
 		System.out.println("All is well (maybe!)");
 	}
 }

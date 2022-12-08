@@ -14,6 +14,11 @@ public class alerter {
 		alertInCelcius(new FakeNetworkAlerter(), 392f);
 		alertInCelcius(new FakeNetworkAlerter(), 303.6f);
 		assert (alertFailureCount == 0);
+
+		NetworkAlerter networkAlerter = new NetworkAlerter();
+		assert (500 == networkAlerter.networkAlert(204.72223f));
+		assert (500 == networkAlerter.networkAlert(200.0f));
+		assert (200 == networkAlerter.networkAlert(150.88889f));
 		System.out.printf("%d alerts failed.\n", alertFailureCount);
 		System.out.println("All is well (maybe!)\n");
 	}
