@@ -1,4 +1,4 @@
-
+package alerter;
 public class FakeNetworkAlerter implements INetworkAlerter {
 
 	public int networkAlert(float celcius) {
